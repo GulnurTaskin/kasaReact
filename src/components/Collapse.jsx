@@ -1,27 +1,22 @@
 // Composant Collapse : permet d'ouvrir et de fermer une section de contenu
-
 import { useState } from "react";
 import "./Collapse.css";
 
-export default function Collapse({ title, children }) {
-  // État du collapse (ouvert ou fermé)
+export default function Collapse({ title, content }) {
   const [isOpen, setIsOpen] = useState(false);
-
-  // Fonction pour changer l'état
-  const toggleCollapse = () => {
-    setIsOpen(!isOpen);
-  };
 
   return (
     <div className="collapse">
-      {/* En-tête cliquable */}
-      <div className="collapse-header" onClick={toggleCollapse}>
-        <h3>{title}</h3>
-        <span className={`arrow ${isOpen ? "open" : ""}`}>⌃</span>
+      <div className="collapse-header" onClick={() => setIsOpen(!isOpen)}>
+        <span className="collapse-title">{title}</span>
+        <span className={`collapse-arrow ${isOpen ? "open" : ""}`}>V</span>
       </div>
 
-      {/* Contenu affiché seulement si ouvert */}
-      {isOpen && <div className="collapse-content">{children}</div>}
+      {isOpen && (
+        <div className="collapse-content">
+          {content}
+        </div>
+      )}
     </div>
   );
 }
