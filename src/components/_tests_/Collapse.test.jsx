@@ -35,7 +35,7 @@ describe("Collapse", () => {
 
   it("met à jour la classe de la flèche en fonction de l'état", () => {
     render(<Collapse title="Fiabilité" content="Texte de test" />);
-    const arrow = screen.getByText("▾");
+    const arrow = screen.getByText("V");
     expect(arrow).toHaveClass("collapse-arrow");
 
     const header = screen.getByText("Fiabilité");
