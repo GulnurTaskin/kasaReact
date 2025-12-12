@@ -1,3 +1,46 @@
-.about-container {
-  padding: 40px 80px;
+/* Conteneur global de la page A Propos */
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* espace entre la bannière et les collapses */
 }
+
+/* Bannière spécifique à la page A Propos :
+   - nouvelle image de fond
+   - pas de texte affiché dans la bannière */
+.about .banner {
+  background-image: url("../assets/banner-about.jpg");
+}
+
+.about .banner__text {
+  display: none; /* sur A Propos, la bannière n'affiche pas de texte */
+}
+
+/* Conteneur des collapses : centré et plus étroit que la bannière,
+   comme sur la maquette Figma */
+.about__collapses {
+  max-width: 1023px;   /* largeur visuelle des blocs de texte */
+  width: 100%;
+  margin: 0 auto 50px; /* centrage horizontal + marge bas */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;           /* espace entre chaque collapse */
+}
+
+/* ----- RESPONSIVE : mobile ----- */
+@media (max-width: 768px) {
+  /* Les collapses doivent être alignés exactement comme la bannière */
+  .about__collapses {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;          /* pas de padding supplémentaire */
+    box-sizing: border-box;
+  }
+
+  /* Chaque collapse prend toute la largeur disponible */
+  .about__collapses .collapse {
+    width: 100%;
+  }
+}
+

@@ -1,37 +1,53 @@
-// Page À propos contenant plusieurs sections en Collapse
+// Page "A Propos" : affichage en mode accordéon (un seul panneau ouvert)
 
-import Collapse from "../components/collapse";
+import { useState } from "react";
+import Banner from "../components/Banner";
+import Collapse from "../components/Collapse";
 import "./About.css";
 
+const aboutSections = [
+  {
+    title: "Fiabilité",
+    content: "Les annonces postées sur Kasa garantissent une fiabilité totale...",
+  },
+  {
+    title: "Respect",
+    content: "La bienveillance fait partie des valeurs fondatrices de Kasa...",
+  },
+  {
+    title: "Service",
+    content: "La qualité du service est au cœur de nos priorités...",
+  },
+  {
+    title: "Sécurité",
+    content: "La sécurité est la priorité de Kasa...",
+  },
+];
+
 export default function About() {
+  // Index du collapse actuellement ouvert (null = aucun)
+  const [openIndex, setOpenIndex] = useState(null);
+
+  // Ouvre/ferme un panneau ; ferme automatiquement les autres
+  const handleToggle = (index) => {
+    setOpenIndex((prev) => (prev === index ? null : index));
+  };
+
   return (
-    <div className="about-container">
-      <Collapse title="Fiabilité">
-        <p>
-          Les annonces postées sur Kasa garantissent une fiabilité totale.
-          Les photos sont conformes aux logements, et toutes les informations sont régulièrement vérifiées.
-        </p>
-      </Collapse>
+    <div className="about">
+      <Banner />
 
-      <Collapse title="Respect">
-        <p>
-          La bienveillance fait partie des valeurs fondatrices de Kasa.
-          Tout comportement irrespectueux entraînera une exclusion de la plateforme.
-        </p>
-      </Collapse>
-
-      <Collapse title="Service">
-        <p>
-          Nos équipes se tiennent à votre disposition pour vous assurer une expérience parfaite.
-        </p>
-      </Collapse>
-
-      <Collapse title="Sécurité">
-        <p>
-          La sécurité est la priorité de Kasa.
-          C’est pour cette raison que nos hôtes s’engagent à respecter un code strict.
-        </p>
-      </Collapse>
+      <div className="about__collapses">
+        {aboutSections.map((section, index) => (
+          <Collapse
+            key={section.title}
+            title={section.title}
+            content={section.content}
+            isOpen={openIndex === index}
+            onToggle={() => handleToggle(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 }

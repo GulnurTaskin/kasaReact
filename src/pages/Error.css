@@ -16,7 +16,35 @@
 }
 
 .error-link {
-  color: #ff6060;
+  color: #000;
   font-size: 18px;
   text-decoration: underline;
+}
+/* =========================
+   mobile
+   ========================= */
+@media (max-width: 768px) {
+  .error { 
+    padding: 0 16px;  
+    margin-top: 50px;
+  }
+
+  /* 404 plus petit que sur desktop */
+  .error-code {
+    font-size: 96px;
+    line-height: 1;
+  }
+
+  /* Texte d'erreur : taille mobile + espacement */
+  .error-text {
+    font-size: 18px;
+    line-height: 1.4;
+    margin-top: 15px;
+    margin-bottom: 60px;
+  }
+
+  /* Lien : lisible et bien espacé */
+  .error-link {
+    font-size: 14px;
+  }
 }

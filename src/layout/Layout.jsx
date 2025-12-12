@@ -13,25 +13,25 @@ export default function Layout() {
         <img src={logo} alt="Kasa" className="layout-logo" />
 
         <nav className="layout-nav">
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) =>
-              "layout-link" + (isActive ? " layout-link--active" : "")
-            }
-          >
-            Accueil
-          </NavLink>
+  <NavLink
+    to="/"
+    end
+    className={({ isActive }) =>
+      "layout-link" + (isActive ? " layout-link--active" : "")
+    }
+  >
+    Accueil
+  </NavLink>
 
-          <NavLink
-            to="/apropos"
-            className={({ isActive }) =>
-              "layout-link" + (isActive ? " layout-link--active" : "")
-            }
-          >
-            A Propos
-          </NavLink>
-        </nav>
+  <NavLink
+    to="/apropos"
+    className={({ isActive }) =>
+      "layout-link" + (isActive ? " layout-link--active" : "")
+    }
+  >
+    A Propos
+  </NavLink>
+</nav>
       </header>
 
       {/* CONTENU */}

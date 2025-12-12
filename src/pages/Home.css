@@ -1,11 +1,59 @@
-.home-container {
-  padding: 20px 50px;
+
+/* Conteneur global de la page d'accueil */
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 43px; /* espace entre la bannière et la galerie */
 }
 
-.cards-container {
-  margin-top: 30px;
+/* Bloc gris aligné avec le logo et la bannière */
+.home__gallery {
+  width: 100%;              /* occupe toute la largeur définie par layout-main */
+  background: #f7f7f7;      /* fond gris comme sur la maquette Figma */
+  border-radius: 25px;      /* coins arrondis */
+  padding: 50px;            /* espace intérieur */
+  box-sizing: border-box;
+
+  /* Grille de cartes : 3 colonnes sur desktop */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;                /* espace entre les cartes */
+}
+/* ----- mobile ----- */
+@media (max-width: 768px) {
+  /* Conteneur de la page : un peu moins d’espace vertical */
+  .home {
+    gap: 22px;
+  }
+
+  .home__gallery {
+    background: transparent;  
+    border-radius: 0;
+    padding: 0;                
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .cards-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: center;
+  }
+
+  
+  .card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
+    border-radius: 10px;
+  }
+
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;  
+  }
 }
 

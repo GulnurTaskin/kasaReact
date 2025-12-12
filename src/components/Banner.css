@@ -19,17 +19,38 @@
 }
 
 /* Texte blanc centré dans la bannière */
-.banner__text {
+.banner-text {
   position: absolute;
-  top: 50%;          /* centre verticalement */
-  left: 50%;         /* centre horizontalement */
-  transform: translate(-50%, -50%); /* ajuste pour être pile au centre */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-  margin: 0;
-  padding: 0 20px;
-  color: white;
+  color: #ffffff;
   font-size: 48px;
-  font-weight: 500;
+  font-weight: 700;
+  margin: 0;
+
+  white-space: nowrap; 
   text-align: center;
-  z-index: 1;
 }
+
+.banner-line-break {
+  display: none;
+}
+/* ----- mobile ----- */
+@media (max-width: 768px) {
+  .banner-text {
+    font-size: 24px;
+    white-space: normal; 
+    text-align: left;    
+    padding: 0 16px;
+  }
+
+  /*  Mobile'da <br> aktif */
+  .banner-line-break {
+    display: inline;
+  }
+}
+
+
+

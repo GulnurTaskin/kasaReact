@@ -11,19 +11,23 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <Error />, // Page affichée si la route n'existe pas
     children: [
       {
         path: "/",
         element: <Home />,
       },
       {
-        path: "/about",
+        path: "/apropos",
         element: <About />,
       },
       {
         path: "/logement/:id", // Route dynamique pour les logements
         element: <Logement />,
+      },
+       {
+        // route de repli : toutes les URL non trouvées passent ici
+        path: "*",
+        element: <Error />,
       },
     ],
   },

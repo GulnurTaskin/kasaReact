@@ -6,7 +6,11 @@ import "./Banner.css";
 export default function Banner() {
   return (
     <div className="banner">
-      <h1 className="banner__text">Chez vous, partout et ailleurs</h1>
+  
+      <p className="banner-text">
+        Chez vous, <br className="banner-line-break" />
+        partout et ailleurs
+      </p>
     </div>
   );
 }

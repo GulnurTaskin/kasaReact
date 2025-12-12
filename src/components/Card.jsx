@@ -10,5 +10,6 @@ export default function Card({ id, title, cover }) {
         <h2>{title}</h2>
       </article>
     </Link>
+    
   );
 }
