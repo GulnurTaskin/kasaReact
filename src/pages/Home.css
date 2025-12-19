@@ -7,7 +7,7 @@
 }
 
 /* Bloc gris aligné avec le logo et la bannière */
-.home__gallery {
+.home-gallery {
   width: 100%;             
   background: #f7f7f7;      
   border-radius: 25px;     
@@ -34,7 +34,7 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
   .cards-container {
     display: flex;
     flex-direction: column; 
