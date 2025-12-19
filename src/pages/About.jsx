@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Banner from "../components/Banner";
-import Collapse from "../components/Collapse";
+import Collapse from "../components/collapse";
 import "./About.css";
 
 const aboutSections = [
@@ -37,7 +37,7 @@ export default function About() {
     <div className="about">
       <Banner />
 
-      <div className="about__collapses">
+      <div className="about-collapses">
         {aboutSections.map((section, index) => (
           <Collapse
             key={section.title}

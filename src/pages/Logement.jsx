@@ -3,7 +3,7 @@
 import { useParams, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Slideshow from "../components/Slideshow";
-import Collapse from "../components/Collapse";
+import Collapse from "../components/collapse";
 import "./Logement.css";
 
 export default function Logement() {

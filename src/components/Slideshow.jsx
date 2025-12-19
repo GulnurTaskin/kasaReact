@@ -36,12 +36,12 @@ export default function Slideshow({ pictures }) {
       {/* Affichage des flèches uniquement s'il y a plusieurs images */}
       {pictures.length > 1 && (
         <>
-          <button className="arrow left" onClick={prevImage}>
-            ❮
-          </button>
-          <button className="arrow right" onClick={nextImage}>
-            ❯
-          </button>
+          <button className="arrow left" onClick={prevImage} aria-label="previous">
+  ❮
+</button>
+<button className="arrow right" onClick={nextImage} aria-label="next">
+  ❯
+</button>
 
           {/* Bullet points dynamiques */}
           <div className="dots">

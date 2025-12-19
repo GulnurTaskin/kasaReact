@@ -2,7 +2,7 @@
 .about {
   display: flex;
   flex-direction: column;
-  gap: 40px; /* espace entre la bannière et les collapses */
+  gap: 40px;
 }
 
 /* Bannière spécifique à la page A Propos :
@@ -12,19 +12,19 @@
   background-image: url("../assets/banner-about.jpg");
 }
 
-.about .banner__text {
+.about .banner-text {
   display: none; /* sur A Propos, la bannière n'affiche pas de texte */
 }
 
 /* Conteneur des collapses : centré et plus étroit que la bannière,
    comme sur la maquette Figma */
-.about__collapses {
-  max-width: 1023px;   /* largeur visuelle des blocs de texte */
+.about-collapses {
+  max-width: 1023px;   
   width: 100%;
-  margin: 0 auto 50px; /* centrage horizontal + marge bas */
+  margin: 0 auto 50px;
   display: flex;
   flex-direction: column;
-  gap: 30px;           /* espace entre chaque collapse */
+  gap: 30px;           
 }
 
 /* ----- RESPONSIVE : mobile ----- */
@@ -34,12 +34,12 @@
     max-width: 100%;
     width: 100%;
     margin: 0;
-    padding: 0;          /* pas de padding supplémentaire */
+    padding: 0;      
     box-sizing: border-box;
   }
 
   /* Chaque collapse prend toute la largeur disponible */
-  .about__collapses .collapse {
+  .about-collapses .collapse {
     width: 100%;
   }
 }

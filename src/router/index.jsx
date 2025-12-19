@@ -1,4 +1,4 @@
-// Configuration du routeur principal de l'application Kasa
+// Configuration du routeur principal 
 
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";

@@ -23,10 +23,10 @@ export default function Home() {
       <Banner />
 
       {/* Bloc gris contenant la grille des propriétés */}
-      <section className="home__gallery">
+      <section className="home-gallery">
         {properties.map((property) => (
           <Card
-            key={property.id}        // clé unique pour chaque carte
+            key={property.id}        
             id={property.id}
             title={property.title}
             cover={property.cover}

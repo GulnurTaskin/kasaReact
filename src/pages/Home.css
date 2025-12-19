@@ -8,31 +8,33 @@
 
 /* Bloc gris aligné avec le logo et la bannière */
 .home__gallery {
-  width: 100%;              /* occupe toute la largeur définie par layout-main */
-  background: #f7f7f7;      /* fond gris comme sur la maquette Figma */
-  border-radius: 25px;      /* coins arrondis */
-  padding: 50px;            /* espace intérieur */
+  width: 100%;             
+  background: #f7f7f7;      
+  border-radius: 25px;     
+  padding: 50px;            
   box-sizing: border-box;
 
   /* Grille de cartes : 3 colonnes sur desktop */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 50px;                /* espace entre les cartes */
+  gap: 50px;                
 }
-/* ----- mobile ----- */
+
+/* -- mobile -- */
 @media (max-width: 768px) {
-  /* Conteneur de la page : un peu moins d’espace vertical */
+  
   .home {
     gap: 22px;
   }
 
-  .home__gallery {
+  .home-gallery {
     background: transparent;  
     border-radius: 0;
     padding: 0;                
     grid-template-columns: 1fr;
     gap: 20px;
   }
+  
   .cards-container {
     display: flex;
     flex-direction: column; 
@@ -40,14 +42,12 @@
     justify-content: center;
   }
 
-  
   .card img {
     width: 100%;
     height: auto;
     object-fit: cover; 
     border-radius: 10px;
   }
-
 
   .card {
     display: flex;

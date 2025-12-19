@@ -114,8 +114,8 @@
   .logement-page {
       width: 100%;
     max-width: 100%;
-    margin: 0;          /* supprime le centrage */
-    padding: 0;         /* évite une double marge si layout-main a déjà du padding */
+    margin: 0;          
+    padding: 0;         
     box-sizing: border-box;
   }
 
@@ -163,7 +163,7 @@
   /* Host + rating : disposition comme Figma (rating à gauche, host à droite) */
   .logement-host-rating {
     display: flex;
-    flex-direction: row-reverse; /* host à droite */
+    flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
   }

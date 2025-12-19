@@ -79,17 +79,17 @@
 
 /* ----- FOOTER GLOBAL ----- */
 .layout-footer {
-  width: 100%;                 /* prend toute la largeur de la fenêtre */
-  background: #000000;         /* bande noire */
+  width: 100%;                
+  background: #000000;        
   color: #fff;
-  padding: 40px 20px;          /* espace intérieur */
+  padding: 40px 20px;          
   margin-top: 50px;
 
   display: flex;
   flex-direction: column;
-  align-items: center;         /* centre horizontalement */
-  justify-content: center;     /* centre verticalement */
-  gap: 15px;                   /* espace entre le logo et le texte */
+  align-items: center;         
+  justify-content: center;    
+  gap: 15px;                 
 }
 
 /* Logo du footer */
@@ -123,7 +123,7 @@
 
   /* Contenu : on remet un espace au-dessus pour décoller la bannière du logo */
   .layout-main {
-    padding: 20px 20px 0; /* 20px en haut, 20px sur les côtés, 0 en bas */
+    padding: 20px 20px 0; 
   }
 
   /* Logo légèrement réduit sur mobile */
@@ -140,7 +140,7 @@
   .layout-nav a {
     text-transform: uppercase;
     font-size: 12px;
-    white-space: nowrap; /* évite le retour à la ligne */
+    white-space: nowrap; 
   }
 }
 
