@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import Slideshow from "../Slideshow";
+import Slideshow from "../components/Slideshow";
 
 describe("Composant Slideshow", () => {
   const picturesMock = ["image1.jpg", "image2.jpg", "image3.jpg"];

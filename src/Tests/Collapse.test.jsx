@@ -2,7 +2,7 @@
 
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import Collapse from "../collapse";
+import Collapse from "../components/collapse";
 
 describe("Collapse", () => {
   it("est fermé par défaut (contenu non affiché)", () => {
