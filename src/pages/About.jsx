@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Banner from "../components/Banner";
-import Collapse from "../components/collapse";
+import Collapse from "../components/Collapse";
 import "./About.css";
 
 const aboutSections = [

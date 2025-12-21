@@ -1,45 +1,72 @@
-// Tests unitaires pour le composant Collapse (avec state)
-
 import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
-import Collapse from "../components/collapse";
+import { describe, it, expect, vi } from "vitest";
+import Collapse from "../components/Collapse";
 
 describe("Collapse", () => {
-  it("est fermé par défaut (contenu non affiché)", () => {
-    render(<Collapse title="Fiabilité" content="Texte de test" />);
-    const content = screen.queryByText("Texte de test");
-    expect(content).not.toBeInTheDocument();
+  it("ne doit pas afficher le contenu lorsque le composant est fermé", () => {
+    render(
+      <Collapse
+        title="Fiabilité"
+        content="Contenu de test"
+        isOpen={false}
+        onToggle={() => {}}
+      />
+    );
+
+    expect(screen.queryByText("Contenu de test")).not.toBeInTheDocument();
   });
 
-  it("affiche le contenu après un clic sur l'en-tête", () => {
-    render(<Collapse title="Fiabilité" content="Texte de test" />);
-    const header = screen.getByText("Fiabilité");
-    fireEvent.click(header);
-    const content = screen.getByText("Texte de test");
-    expect(content).toBeInTheDocument();
+  it("doit afficher le contenu lorsque le composant est ouvert", () => {
+    render(
+      <Collapse
+        title="Fiabilité"
+        content="Contenu de test"
+        isOpen={true}
+        onToggle={() => {}}
+      />
+    );
+
+    expect(screen.getByText("Contenu de test")).toBeInTheDocument();
   });
 
-  it("cache de nouveau le contenu après deux clics", () => {
-    render(<Collapse title="Fiabilité" content="Texte de test" />);
-    const header = screen.getByText("Fiabilité");
+  it("doit appeler la fonction onToggle lors du clic sur le titre", () => {
+    const onToggle = vi.fn();
 
-    // 1er clic : ouverture
-    fireEvent.click(header);
-    expect(screen.getByText("Texte de test")).toBeInTheDocument();
+    render(
+      <Collapse
+        title="Fiabilité"
+        content="Contenu de test"
+        isOpen={false}
+        onToggle={onToggle}
+      />
+    );
 
-    // 2e clic : fermeture
-    fireEvent.click(header);
-    const content = screen.queryByText("Texte de test");
-    expect(content).not.toBeInTheDocument();
+    fireEvent.click(screen.getByText("Fiabilité"));
+    expect(onToggle).toHaveBeenCalledTimes(1);
   });
 
-  it("met à jour la classe de la flèche en fonction de l'état", () => {
-    render(<Collapse title="Fiabilité" content="Texte de test" />);
-   const arrow = screen.getByTestId("collapse-arrow");
-    expect(arrow).toHaveClass("collapse-arrow");
+  it("doit mettre à jour la classe de la flèche en fonction de l'état", () => {
+    const { rerender } = render(
+      <Collapse
+        title="Fiabilité"
+        content="Contenu de test"
+        isOpen={false}
+        onToggle={() => {}}
+      />
+    );
 
-    const header = screen.getByText("Fiabilité");
-    fireEvent.click(header);
+    const arrow = screen.getByTestId("collapse-arrow");
+    expect(arrow).not.toHaveClass("open");
+
+    rerender(
+      <Collapse
+        title="Fiabilité"
+        content="Contenu de test"
+        isOpen={true}
+        onToggle={() => {}}
+      />
+    );
+
     expect(arrow).toHaveClass("open");
   });
 });

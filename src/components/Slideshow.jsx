@@ -1,54 +1,66 @@
-// Composant Slideshow pour afficher les images d'un logement
 import { useState } from "react";
 import "./Slideshow.css";
 
-export default function Slideshow({ pictures }) {
-  // Index de l'image actuellement affichée
+function Slideshow({ pictures }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Fonction pour passer à l'image suivante
-  const nextImage = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === pictures.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  // Fonction pour passer à l'image précédente
-  const prevImage = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? pictures.length - 1 : prevIndex - 1
-    );
-  };
-
-  // Si une seule image, on affiche uniquement l'image sans les contrôles
   if (!pictures || pictures.length === 0) {
     return null;
+  }
+
+  const hasManyPictures = pictures.length > 1;
+
+  function nextImage() {
+    let newIndex = currentIndex + 1;
+
+    if (newIndex >= pictures.length) {
+      newIndex = 0;
+    }
+
+    setCurrentIndex(newIndex);
+  }
+
+  function prevImage() {
+    let newIndex = currentIndex - 1;
+
+    if (newIndex < 0) {
+      newIndex = pictures.length - 1;
+    }
+
+    setCurrentIndex(newIndex);
   }
 
   return (
     <div className="slideshow">
       <img
+        className="slideshow-image"
         src={pictures[currentIndex]}
         alt="Logement"
-        className="slideshow-image"
       />
 
-      {/* Affichage des flèches uniquement s'il y a plusieurs images */}
-      {pictures.length > 1 && (
+      {hasManyPictures && (
         <>
-          <button className="arrow left" onClick={prevImage} aria-label="previous">
-  ❮
-</button>
-<button className="arrow right" onClick={nextImage} aria-label="next">
-  ❯
-</button>
+          <button
+            className="arrow left"
+            onClick={prevImage}
+            aria-label="previous"
+          >
+            ❮
+          </button>
 
-          {/* Bullet points dynamiques */}
+          <button
+            className="arrow right"
+            onClick={nextImage}
+            aria-label="next"
+          >
+            ❯
+          </button>
+
           <div className="dots">
-            {pictures.map((_, index) => (
+            {pictures.map((picture, index) => (
               <span
-                key={index}
-                className={`dot ${index === currentIndex ? "active" : ""}`}
+                key={picture} 
+                className={index === currentIndex ? "dot active" : "dot"}
               ></span>
             ))}
           </div>
@@ -57,3 +69,5 @@ export default function Slideshow({ pictures }) {
     </div>
   );
 }
+
+export default Slideshow;

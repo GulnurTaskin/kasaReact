@@ -1,59 +1,56 @@
-// Page Logement : affiche les détails d'une propriété
-
-import { useParams, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useParams, Navigate } from "react-router-dom";
 import Slideshow from "../components/Slideshow";
-import Collapse from "../components/collapse";
+import Collapse from "../components/Collapse";
 import "./Logement.css";
 
-export default function Logement() {
+function Logement() {
   const { id } = useParams();
+
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Accordéon : index du collapse ouvert (0 = Description, 1 = Équipements)
+  // 0: Description, 1: Equipements, null: rien
   const [openIndex, setOpenIndex] = useState(null);
 
-  // Récupération des données du logement
   useEffect(() => {
     setLoading(true);
+    setProperty(null);
 
     fetch(`http://localhost:8080/api/properties/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProperty(data);
         setLoading(false);
-        setOpenIndex(null); // réinitialise l'accordéon quand on change de logement
+        setOpenIndex(null);
       })
       .catch(() => {
-        setProperty(null);
         setLoading(false);
       });
   }, [id]);
-
-  // Si la propriété n'existe pas → redirection vers la page 404
-  // (On redirige vers une route inexistante pour déclencher le path="*")
-  if (!loading && !property?.id) {
-    return <Navigate to="/404" replace />;
-  }
 
   if (loading) {
     return <p style={{ padding: "50px" }}>Chargement...</p>;
   }
 
-  // Ouvre/ferme un panneau ; ferme automatiquement l’autre
-  const handleToggle = (index) => {
-    setOpenIndex((prev) => (prev === index ? null : index));
-  };
+  // Eğer API hata verdiyse veya logement bulunamadıysa
+  if (property === null || !property.id) {
+    return <Navigate to="/404" replace />;
+  }
+
+  function handleToggle(index) {
+    if (openIndex === index) {
+      setOpenIndex(null);
+    } else {
+      setOpenIndex(index);
+    }
+  }
 
   return (
     <div className="logement-page">
-      {/* SLIDESHOW */}
       <Slideshow pictures={property.pictures} />
 
-      {/* HEADER DU LOGEMENT */}
       <div className="logement-header">
-        {/* TITRE + LOCALISATION + TAGS */}
         <div className="logement-info">
           <h1 className="logement-title">{property.title}</h1>
           <p className="logement-location">{property.location}</p>
@@ -67,7 +64,6 @@ export default function Logement() {
           </div>
         </div>
 
-        {/* HOST + RATING */}
         <div className="logement-host-rating">
           <div className="host">
             <p className="host-name">{property.host.name}</p>
@@ -91,7 +87,6 @@ export default function Logement() {
         </div>
       </div>
 
-      {/* COLLAPSES (mode accordéon) */}
       <div className="logement-collapses">
         <Collapse
           title="Description"
@@ -116,3 +111,5 @@ export default function Logement() {
     </div>
   );
 }
+
+export default Logement;

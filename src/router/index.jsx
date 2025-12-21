@@ -1,9 +1,7 @@
-// Configuration du routeur principal 
-
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Home from "../pages/home";
-import About from "../pages/about";
+import Home from "../pages/Home";
+import About from "../pages/About";
 import Logement from "../pages/Logement";
 import Error from "../pages/Error";
 
@@ -11,24 +9,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/apropos",
-        element: <About />,
-      },
-      {
-        path: "/logement/:id", // Route dynamique pour les logements
-        element: <Logement />,
-      },
-       {
-        // route de repli : toutes les URL non trouvées passent ici
-        path: "*",
-        element: <Error />,
-      },
+      { index: true, element: <Home /> },
+      { path: "apropos", element: <About /> },
+      { path: "logement/:id", element: <Logement /> },
     ],
   },
 ]);
